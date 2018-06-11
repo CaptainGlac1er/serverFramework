@@ -1,0 +1,28 @@
+version: "3.6"
+
+services:
+  georgecolgrove:
+    build: ./websites/personalwebsite
+    volumes: 
+      - ./websites/personalwebsite/www:/var/www/site
+      - ./websites/personalwebsite/config:/etc/apache2/sites-enabled/
+      - ./websites/personalwebsite/logs:/var/log/apache2
+    env_file:
+      - nginx.env  
+    networks: 
+      - frontend
+    ports:
+      - 1000:80
+  nginx:
+    build: ./proxy
+    ports:
+      - 80:80
+      - 443:443
+    networks: 
+      - frontend
+    depends_on:
+      - georgecolgrove
+# Do not forget to 'docker network create georgecolgrove' before launch, and to add '--network georgecolgrove' to proxied containers. 
+networks: 
+  frontend:
+    name: georgecolgrove
