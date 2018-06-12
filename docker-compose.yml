@@ -11,8 +11,6 @@ services:
       - nginx.env  
     networks: 
       - frontend
-    ports:
-      - 1000:80
   nginx:
     build: ./proxy
     ports:
@@ -25,4 +23,3 @@ services:
 # Do not forget to 'docker network create georgecolgrove' before launch, and to add '--network georgecolgrove' to proxied containers. 
 networks: 
   frontend:
-    name: georgecolgrove
