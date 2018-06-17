@@ -32,6 +32,8 @@ services:
       - frontend
     depends_on:
       - georgecolgrove
+      - ritcampus
+      - gwcprojects
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
   frontend:
