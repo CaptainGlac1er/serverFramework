@@ -11,6 +11,12 @@ services:
       - nginx.env  
     networks: 
       - frontend
+  angular-georgecolgrove-client:
+    image: "httpd:2.4.33-alpine"
+    volumes:
+      - ./websites/angular-personalwebsite/client/dist:/usr/local/apache2/htdocs/
+    networks: 
+      - frontend
   ritcampus:
     image: "php:7-apache"
     volumes:
@@ -38,6 +44,7 @@ services:
       - georgecolgrove
       - ritcampus
       - gwcprojects
+      - angular-georgecolgrove-client
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
   frontend:
