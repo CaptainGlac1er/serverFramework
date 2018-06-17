@@ -11,6 +11,18 @@ services:
       - nginx.env  
     networks: 
       - frontend
+  ritcampus:
+    image: php:7-apache
+    volumes:
+      - ./websites/ritcampus:/var/www/html:rw
+    networks: 
+      - frontend
+  gwcprojects:
+    image: php:7-apache
+    volumes:
+      - ./websites/website:/var/www/html:rw
+    networks: 
+      - frontend
   nginx:
     build: ./proxy
     ports:
