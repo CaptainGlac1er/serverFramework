@@ -31,6 +31,7 @@ services:
     networks: 
       - frontend
     volumes: 
+      - ./proxy/logs:/logs
       - ./proxy/certs:/etc/ssl/certs/nginx
       - ./proxy/letsencrypt/:/var/www/html
     depends_on:
