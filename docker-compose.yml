@@ -32,7 +32,7 @@ services:
       - frontend
     volumes: 
       - ./proxy/certs:/etc/ssl/certs/nginx
-      - ./proxy/letsencrypt/:/var/www/georgecolgrove.com
+      - ./proxy/letsencrypt/:/var/www/html
     depends_on:
       - georgecolgrove
       - ritcampus
