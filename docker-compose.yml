@@ -4,7 +4,7 @@ services:
   georgecolgrove:
     build: ./websites/personalwebsite
     volumes: 
-      - ./websites/personalwebsite/www:/var/www/site
+      - ./websites/personalwebsite/www:/var/www/html/
       - ./websites/personalwebsite/config:/etc/apache2/sites-enabled/
       - ./websites/personalwebsite/logs:/var/log/apache2
     env_file:
