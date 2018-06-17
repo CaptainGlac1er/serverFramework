@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:alphine
 
 #  default conf for proxy service
 COPY ./default.conf /etc/nginx/conf.d/default.conf
