@@ -45,7 +45,7 @@ services:
       - ritcampus
       - gwcprojects
       - angular-georgecolgrove-client
-      - database
+      - db1
   db1:
     image: "mysql:8.0.11"
     networks: 
