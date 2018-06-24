@@ -45,6 +45,18 @@ services:
       - ritcampus
       - gwcprojects
       - angular-georgecolgrove-client
+      - database
+  database:
+    image: "mysql:8.0.11"
+    networks: 
+      - backend
+      - frontend
+    volumes:
+      - ./database:/var/lib/mysql
+    enviroment:
+      MYSQL_RANDOM_ROOT_PASSWORD: true
+
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
   frontend:
+  backend:
