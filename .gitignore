@@ -1,2 +1,5 @@
 websites/*/
 proxy/certs/*/
+letsencrypt
+proxy/letsencrypt
+proxy/logs
