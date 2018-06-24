@@ -53,7 +53,7 @@ services:
       - frontend
     volumes:
       - ./database:/var/lib/mysql
-    enviroment:
+    environment:
       MYSQL_RANDOM_ROOT_PASSWORD: true
 
 # Do not forget to 'docker network create georgecolgrove' before launch
