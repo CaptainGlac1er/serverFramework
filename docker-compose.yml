@@ -34,7 +34,6 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 3306:3306
     networks: 
       - frontend
     volumes: 
@@ -49,13 +48,12 @@ services:
       - db1
   db1:
     image: "mysql:8.0.11"
+    ports:
+      - 3306:3306
     networks: 
       - backend
-      - frontend
     volumes:
       - ./database:/var/lib/mysql
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
