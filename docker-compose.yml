@@ -54,6 +54,11 @@ services:
       - backend
     volumes:
       - ./database:/var/lib/mysql
+  db2:
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
 
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
