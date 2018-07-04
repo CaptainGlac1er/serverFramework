@@ -1,2 +1,5 @@
-*.georgecolgrove.com
-*.gwcprojects.com
+*.georgecolgrove.com{
+    tls {
+        dns godaddy
+    }
+}
