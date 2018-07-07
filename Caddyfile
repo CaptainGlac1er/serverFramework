@@ -1,6 +1,0 @@
-*.georgecolgrove.com
-log ../access.log{
-    tls {
-        dns godaddy
-    }
-}

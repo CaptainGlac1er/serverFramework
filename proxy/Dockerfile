@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+
+
 #  default conf for proxy service
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 
@@ -8,3 +10,8 @@ COPY ./backend-not-found.html /var/www/html/backend-not-found.html
 
 #  Proxy and SSL configurations
 COPY ./includes /etc/nginx/includes/
+
+
+RUN apk update && \
+    apk add --no-cache certbot && \
+    rm -rf /var/cache/apk/*
