@@ -1,5 +1,0 @@
-*.georgecolgrove.com{
-    tls {
-        dns godaddy
-    }
-}
