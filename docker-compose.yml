@@ -12,9 +12,9 @@ services:
     networks: 
       - frontend
   angular-georgecolgrove-client:
-    image: "httpd:2.4.33-alpine"
+    build: "./websites/angular-personalwebsite"
     volumes:
-      - ./websites/angular-personalwebsite/client/dist:/usr/local/apache2/htdocs/
+      - ./websites/angular-personalwebsite/dist/angular-georgecolgrove:/usr/local/apache2/htdocs/
     networks: 
       - frontend
   ritcampus:
@@ -61,6 +61,7 @@ services:
     volumes:
       - ./databases/db2:/var/lib/postgresql/data
     restart: always
+
 
 # Do not forget to 'docker network create georgecolgrove' before launch
 networks: 
