@@ -12,9 +12,7 @@ services:
     networks: 
       - frontend
   angular-georgecolgrove-client:
-    build: "./websites/angular-personalwebsite"
-    volumes:
-      - ./websites/angular-personalwebsite/dist/angular-georgecolgrove:/usr/local/apache2/htdocs/
+    build: "./websites/angular"
     networks: 
       - frontend
   ritcampus:
