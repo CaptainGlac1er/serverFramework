@@ -13,6 +13,8 @@ services:
       - frontend
   angular-georgecolgrove-client:
     build: "./websites/angular"
+    volumes:
+      - ./websites/angular/logs/:/logs
     networks: 
       - frontend
   ritcampus:
