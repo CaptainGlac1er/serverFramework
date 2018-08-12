@@ -4,3 +4,4 @@ letsencrypt
 proxy/letsencrypt
 proxy/logs
 databases/*
+.idea

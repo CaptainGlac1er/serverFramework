@@ -12,7 +12,7 @@ services:
     networks: 
       - frontend
   angular-georgecolgrove-client:
-    build: "./websites/angular"
+    image: 'captainglacier/angular-georgecolgrove:latest'
     volumes:
       - ./websites/angular/logs/:/logs
     networks: 
