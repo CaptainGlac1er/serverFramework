@@ -47,17 +47,17 @@ services:
       - angular-georgecolgrove-client
       - db1
   db1:
-    image: "mysql:8.0.11"
+    image: "mysql:8.0"
     ports:
-      - 127.0.0.1:3306:3306
+      - localhost:3306:3306
     networks: 
       - backend
     volumes:
       - ./databases/db1:/var/lib/mysql
   db2:
-    image: postgres
+    image: 11-postgres
     ports:
-      - 127.0.0.1:5432:5432
+      - localhost:5432:5432
     volumes:
       - ./databases/db2:/var/lib/postgresql/data
     restart: always
