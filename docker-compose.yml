@@ -55,7 +55,7 @@ services:
     volumes:
       - ./databases/db1:/var/lib/mysql
   db2:
-    image: 11-postgres
+    image: "postgres:11-alpine"
     ports:
       - 127.0.0.1:5432:5432
     volumes:
