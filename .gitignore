@@ -1,7 +1,14 @@
-websites/*/
-proxy/certs/*/
-letsencrypt
-proxy/letsencrypt
-proxy/logs
-databases/*
+# ide
 .idea
+
+# database folder
+databases/*/
+
+# website folder
+websites/*/
+
+# cdn folder
+cdn/*/
+
+#log files
+logs/*/

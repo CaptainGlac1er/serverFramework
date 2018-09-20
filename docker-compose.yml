@@ -29,6 +29,14 @@ services:
       - ./websites/website:/var/www/html:rw
     networks: 
       - frontend
+  cdn-georgecolgrove:
+    image: "captainglacier/simple-docker-cdn:latest"
+    volumes:
+      - ./logs/cdn-georgecolgrove/:/logs
+      - ./cdn/georgecolgrove/:/var/www/assets
+    networks: 
+      - frontend
+    restart: always
   nginx:
     build: ./proxy
     ports:
@@ -37,15 +45,14 @@ services:
     networks: 
       - frontend
     volumes: 
-      - ./proxy/logs:/logs
+      - ./logs/nginx:/var/logs/nginx/
       - ./proxy/certs:/etc/ssl/certs/nginx
-      - ./proxy/letsencrypt/:/var/www/html
     depends_on:
       - georgecolgrove
       - ritcampus
       - gwcprojects
       - angular-georgecolgrove-client
-      - db1
+      - cdn-georgecolgrove
   db1:
     image: "mysql:8.0"
     ports:
@@ -54,13 +61,14 @@ services:
       - backend
     volumes:
       - ./databases/db1:/var/lib/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   db2:
     image: "postgres:11-alpine"
     ports:
       - 127.0.0.1:5432:5432
     volumes:
       - ./databases/db2:/var/lib/postgresql/data
-    restart: always
 
 
 # Do not forget to 'docker network create georgecolgrove' before launch
