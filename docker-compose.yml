@@ -2,19 +2,15 @@ version: "3.6"
 
 services:
   georgecolgrove:
-    build: ./websites/personalwebsite
-    volumes: 
-      - ./websites/personalwebsite/www:/var/www/html/
-      - ./websites/personalwebsite/config:/etc/apache2/sites-enabled/
-      - ./websites/personalwebsite/logs:/var/log/apache2
-    env_file:
-      - nginx.env  
+    image: captainglacier/old-php-georgecolgrove:latest
+    volumes:
+      - ./logs/php-georgecolgrove:/var/log/apache2
     networks: 
       - frontend
   angular-georgecolgrove-client:
-    image: 'captainglacier/angular-georgecolgrove:latest'
+    image: captainglacier/angular-georgecolgrove:latest
     volumes:
-      - ./websites/angular/logs/:/logs
+      - ./logs/angular-georgecolgrove:/logs
     networks: 
       - frontend
   ritcampus:
@@ -30,7 +26,7 @@ services:
     networks: 
       - frontend
   cdn-georgecolgrove:
-    image: "captainglacier/simple-docker-cdn:latest"
+    image: captainglacier/simple-docker-cdn:latest
     volumes:
       - ./logs/cdn-georgecolgrove/:/logs
       - ./cdn/georgecolgrove/:/var/www/assets
@@ -38,7 +34,7 @@ services:
       - frontend
     restart: always
   nginx:
-    image: "nginx:1-alpine"
+    image: nginx:1-alpine
     ports:
       - 80:80
       - 443:443
@@ -57,7 +53,7 @@ services:
       - angular-georgecolgrove-client
       - cdn-georgecolgrove
   db1:
-    image: "mysql:8.0"
+    image: mysql:8.0
     ports:
       - 127.0.0.1:3306:3306
     networks: 
@@ -67,7 +63,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   db2:
-    image: "postgres:11-alpine"
+    image: postgres:11-alpine
     ports:
       - 127.0.0.1:5432:5432
     networks: 
