@@ -12,3 +12,6 @@ cdn/*/
 
 #log files
 logs/*/
+
+# proxy private files
+proxy/certs/*
