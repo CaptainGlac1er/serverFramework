@@ -1,18 +1,28 @@
 version: "3.6"
 
 services:
-  georgecolgrove:
+  php-georgecolgrove:
     image: captainglacier/old-php-georgecolgrove:latest
     volumes:
       - ./logs/php-georgecolgrove:/var/log/apache2
     networks: 
       - frontend
-  angular-georgecolgrove-client:
+    restart: always
+  angular-georgecolgrove:
     image: captainglacier/angular-georgecolgrove:latest
     volumes:
       - ./logs/angular-georgecolgrove:/logs
     networks: 
       - frontend
+    restart: always
+  cdn-georgecolgrove:
+    image: captainglacier/simple-docker-cdn:latest
+    volumes:
+      - ./logs/cdn-georgecolgrove/:/logs
+      - ./cdn/georgecolgrove/:/var/www/assets
+    networks: 
+      - frontend
+    restart: always
   ritcampus:
     image: "php:7-apache"
     volumes:
@@ -25,14 +35,6 @@ services:
       - ./websites/website:/var/www/html:rw
     networks: 
       - frontend
-  cdn-georgecolgrove:
-    image: captainglacier/simple-docker-cdn:latest
-    volumes:
-      - ./logs/cdn-georgecolgrove/:/logs
-      - ./cdn/georgecolgrove/:/var/www/assets
-    networks: 
-      - frontend
-    restart: always
   nginx:
     image: nginx:1-alpine
     ports:
@@ -47,11 +49,11 @@ services:
       - ./proxy/includes:/etc/nginx/includes/
       - ./proxy/backend-not-found.html:/var/www/html/backend-not-found.html
     depends_on:
-      - georgecolgrove
+      - php-georgecolgrove
+      - angular-georgecolgrove
+      - cdn-georgecolgrove
       - ritcampus
       - gwcprojects
-      - angular-georgecolgrove-client
-      - cdn-georgecolgrove
   db1:
     image: mysql:8.0
     ports:
