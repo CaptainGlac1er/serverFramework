@@ -17,11 +17,11 @@ services:
     restart: always
   angular-georgecolgrove-beta:
     image: captainglacier/angular-georgecolgrove:beta
-    volumes:
-    - ./logs/angular-georgecolgrove-beta:/logs
     networks:
     - frontend
     restart: always
+    environment:
+      - PORT=80
   cdn-georgecolgrove:
     image: captainglacier/simple-docker-cdn:latest
     volumes:

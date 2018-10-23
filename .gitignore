@@ -2,16 +2,16 @@
 .idea
 
 # database folder
-databases/*/
+databases/*
 
 # website folder
-websites/*/
+websites/*
 
 # cdn folder
-cdn/*/
+cdn/*
 
 #log files
-logs/*/
+logs/*
 
 # proxy private files
 proxy/certs/*
