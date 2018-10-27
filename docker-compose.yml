@@ -9,7 +9,7 @@ services:
       - frontend
     restart: always
   angular-georgecolgrove:
-    image: captainglacier/angular-georgecolgrove:latest=
+    image: captainglacier/angular-georgecolgrove:latest
     networks: 
       - frontend
     restart: always
