@@ -9,12 +9,12 @@ services:
       - frontend
     restart: always
   angular-georgecolgrove:
-    image: captainglacier/angular-georgecolgrove:latest
-    volumes:
-      - ./logs/angular-georgecolgrove:/logs
+    image: captainglacier/angular-georgecolgrove:latest=
     networks: 
       - frontend
     restart: always
+    environment:
+      - PORT=80
   angular-georgecolgrove-beta:
     image: captainglacier/angular-georgecolgrove:beta
     networks:
