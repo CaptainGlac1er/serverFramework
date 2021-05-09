@@ -31,13 +31,13 @@ services:
       - frontend
     restart: always
   ritcampus:
-    image: "php:7-apache"
+    image: "php:8-apache"
     volumes:
       - ./websites/ritcampus:/var/www/html:rw
     networks: 
       - frontend
   gwcprojects:
-    image: php:7-apache
+    image: php:8-apache
     volumes:
       - ./websites/website:/var/www/html:rw
     networks: 
