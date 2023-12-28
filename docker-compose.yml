@@ -51,7 +51,13 @@ services:
       - frontend
     volumes: 
       - ./logs/nginx:/var/logs/nginx/
-      - ./proxy/certs:/etc/ssl/certs/nginx/
+      - /home/georgecolgrove/letsencypt/config/archive/georgecolgrove.com-0001/:/etc/ssl/certs/nginx/archive/georgecolgrove.com-0001/:ro
+      - /home/georgecolgrove/letsencypt/config/live/georgecolgrove.com-0001/:/etc/ssl/certs/nginx/live/georgecolgrove.com/:ro
+#      - /home/georgecolgrove/letsencypt/config/live/cert.pem:/etc/ssl/certs/nginx/cert.pem
+#      - /home/georgecolgrove/letsencypt/config/live/chain.pem:/etc/ssl/certs/nginx/chain.pem
+#      - /home/georgecolgrove/letsencypt/config/live/fullchain.pem:/etc/ssl/certs/nginx/fullchain.pem
+#      - /home/georgecolgrove/letsencypt/config/live/privkey.pem:/etc/ssl/certs/nginx/privkey.pem
+#      - ./proxy/certs:/etc/ssl/certs/nginx/
       - ./proxy/default.conf:/etc/nginx/conf.d/default.conf
       - ./proxy/includes:/etc/nginx/includes/
       - ./proxy/backend-not-found.html:/var/www/html/backend-not-found.html
