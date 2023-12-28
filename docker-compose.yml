@@ -78,7 +78,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   db2:
-    image: postgres:11-alpine
+    image: postgres:16-alpine
     ports:
       - 127.0.0.1:5432:5432
     networks: 
