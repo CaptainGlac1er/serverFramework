@@ -85,6 +85,33 @@ services:
       - backend
     volumes:
       - ./databases/db2:/var/lib/postgresql/data
+  teamspeak:
+    image: teamspeak:3.13
+    restart: always
+    ports:
+      - 9987:9987/udp
+      - 10011:10011
+      - 30033:30033
+    env_file: "./config/teamspeak.env"
+    environment:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: mariadb
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb
+    restart: always
+    env_file: "./config/teamspeak.env"
+    volumes:
+      - ./databases/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: teamspeak
+
 
 networks: 
   frontend:
