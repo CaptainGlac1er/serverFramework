@@ -68,7 +68,7 @@ services:
       - ritcampus
       - gwcprojects
   db1:
-    image: mysql:8.0
+    image: mysql:9.3
     ports:
       - 127.0.0.1:3306:3306
     networks: 
