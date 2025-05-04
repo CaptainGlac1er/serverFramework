@@ -89,9 +89,9 @@ services:
     image: teamspeak:3.13
     restart: always
     ports:
-      - 9987:9987/udp
-      - 10011:10011
-      - 30033:30033
+      - "9987:9987/udp"
+      - "10011:10011"
+      - "30033:30033"
     env_file: "./config/teamspeak.env"
     environment:
       TS3SERVER_DB_PLUGIN: ts3db_mariadb
